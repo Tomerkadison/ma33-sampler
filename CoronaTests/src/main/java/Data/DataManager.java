@@ -3,11 +3,11 @@ package Data;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class Data {
+public class DataManager {
     private ArrayList<HashMap<String, String>> data;
     private String[] parameters;
 
-    public Data(String[] parameters) {
+    public DataManager(String[] parameters) {
         this.parameters = parameters;
         this.data = new ArrayList<HashMap<String, String>>();
     }
@@ -19,6 +19,11 @@ public class Data {
         }
         this.data.add(newEntity);
     }
+
+    public HashMap<String,String> getRecord(int i){
+        return this.data.get(i);
+    }
+
     public void addColumn(String columnName){
         String[] oldParameters = this.parameters.clone();
         this.parameters = new String[oldParameters.length+1];
@@ -26,5 +31,13 @@ public class Data {
             this.parameters[i] = oldParameters[i];
         }
         this.parameters[this.parameters.length -1] = columnName;
+    }
+
+    public ArrayList<HashMap<String, String>> getData() {
+        return data;
+    }
+
+    public String[] getParameters() {
+        return parameters;
     }
 }

@@ -24,6 +24,11 @@
             <artifactId>mssql-jdbc</artifactId>
             <version>10.1.0.jre17-preview</version>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.10.0</version>
+        </dependency>
 
 
     </dependencies>

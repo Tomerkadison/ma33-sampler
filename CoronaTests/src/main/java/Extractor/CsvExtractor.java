@@ -1,19 +1,16 @@
 package Extractor;
 
-import Data.Data;
+import Data.DataManager;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.DriverManager;
-
-import com.microsoft.sqlserver.jdbc.*;
 
 public class CsvExtractor implements Extractor {
     private String path;
-    private Data data;
+    private DataManager data;
 
     public CsvExtractor(String path) {
         this.path = path;
@@ -24,7 +21,7 @@ public class CsvExtractor implements Extractor {
         try {
             CSVReader reader = new CSVReader(new FileReader(this.path));
             String[] parameters = reader.readNext();
-            this.data = new Data(parameters);
+            this.data = new DataManager(parameters);
             String[] newRecord;
             while ((newRecord = reader.readNext()) != null) {
                 this.data.addRecord(newRecord);
@@ -37,6 +34,11 @@ public class CsvExtractor implements Extractor {
             e.printStackTrace();
         }
 
+    }
+
+    @Override
+    public DataManager getData() {
+        return this.data;
     }
 
 
