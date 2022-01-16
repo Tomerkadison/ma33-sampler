@@ -1,5 +1,5 @@
 package Loader;
 
 public interface Loader {
-    void Load();
+    void load();
 }
