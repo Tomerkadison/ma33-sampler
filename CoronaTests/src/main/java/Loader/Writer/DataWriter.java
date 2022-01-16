@@ -1,7 +1,9 @@
 package Loader.Writer;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public interface DataWriter {
-    void writeRecord(HashMap<String,String> record);
+    void writeRecords(List<HashMap<String, String>> records );
 }

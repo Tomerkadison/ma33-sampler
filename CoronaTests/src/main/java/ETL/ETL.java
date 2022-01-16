@@ -1,20 +1,20 @@
 package ETL;
 
-import Extractor.Extractor;
-import Loader.Loader;
+import Extractor.*;
+import Loader.*;
 import Transformer.*;
 
 public class ETL {
-    private Extractor extractor;
-    private Transformer transformer;
-    private Loader loader;
+    private BasicExtractor extractor;
+    private BasicTransformer transformer;
+    private BasicLoader loader;
 
-    public ETL(Extractor extractor, Transformer transformer,Loader loader) {
+    public ETL(BasicLoader loader,BasicTransformer transformer,BasicExtractor extractor) {
         this.extractor = extractor;
         this.transformer = transformer;
         this.loader = loader;
     }
-    public ETL(Extractor extractor,Loader loader) {
+    public ETL(BasicExtractor extractor ,BasicLoader loader) {
         this.extractor = extractor;
         this.transformer = new NoTransformTransformer();
         this.loader = loader;
@@ -22,7 +22,9 @@ public class ETL {
 
     public void execute(){
         this.extractor.extract();
+        this.transformer.setData(this.extractor.getData());
         this.transformer.Transform();
+        this.loader.setData(transformer.getData());
         this.loader.load();
     }
 }

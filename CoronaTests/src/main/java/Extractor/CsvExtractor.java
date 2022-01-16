@@ -4,22 +4,23 @@ import Data.DataManager;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
 
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
-public class CsvExtractor implements Extractor {
-    private String path;
-    private DataManager data;
+public class CsvExtractor extends BasicExtractor {
 
     public CsvExtractor(String path) {
-        this.path = path;
+        super(path);
     }
 
     @Override
     public void extract() {
         try {
-            CSVReader reader = new CSVReader(new FileReader(this.path));
+            CSVReader reader = new CSVReader(new BufferedReader(new FileReader(path)));
             String[] parameters = reader.readNext();
             this.data = new DataManager(parameters);
             String[] newRecord;

@@ -7,7 +7,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
 public class JsonWriter implements DataWriter{
     private String path;
 
@@ -16,10 +19,10 @@ public class JsonWriter implements DataWriter{
     }
 
     @Override
-    public void writeRecord(HashMap<String, String> record) {
+    public void writeRecords(List<HashMap<String, String>> records) {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            mapper.writeValue(Paths.get(this.path).toFile(),record);
+            mapper.writeValue(Paths.get(this.path).toFile(),records);
         }catch (JsonMappingException e) {
             e.printStackTrace();
         } catch (JsonGenerationException e) {

@@ -2,6 +2,7 @@ package Data;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class DataManager {
     private ArrayList<HashMap<String, String>> data;
@@ -20,8 +21,8 @@ public class DataManager {
         this.data.add(newEntity);
     }
 
-    public HashMap<String,String> getRecord(int i){
-        return this.data.get(i);
+    public List<HashMap<String, String>> getRecords(int i, int j){
+        return this.data.subList(i,j);
     }
 
     public void addColumn(String columnName){
