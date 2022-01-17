@@ -18,7 +18,7 @@ public class BasicLoader implements Loader {
     private DataManager data;
     private String type;
     private DataWriter dataWriter;
-
+    private static final int amountInFile = 50000;
     public BasicLoader(String path, String type) {
         this.type = type;
         this.path = path +"."+ type;
@@ -28,12 +28,12 @@ public class BasicLoader implements Loader {
     @Override
     public void load() {
         ObjectMapper mapper = new ObjectMapper();
-        for (int i = 0; i <(this.data.getData().size()-1)/ 500; i++) {
-            dataWriter.writeRecords(this.data.getRecords(i*100,(i+1)*100));
+        for (int i = 0; i <(this.data.getData().size()-1)/ amountInFile; i++) {
+            dataWriter.writeRecords(this.data.getRecords(i*amountInFile,(i+1)*amountInFile));
             this.path = this.path.substring(0,this.path.length()-this.type.length()-1) + "l."+type;
             this.dataWriter = new DataWriterFactories(this.path).get(this.type).create();
         }
-        this.dataWriter.writeRecords(this.data.getRecords(100*((this.data.getData().size()-1) / 100),this.data.getData().size()));
+        this.dataWriter.writeRecords(this.data.getRecords(amountInFile*((this.data.getData().size()-1) / amountInFile),this.data.getData().size()));
     }
     public void setData(DataManager data){
         this.data = data;
