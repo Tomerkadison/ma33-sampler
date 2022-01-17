@@ -11,11 +11,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class JsonWriter implements DataWriter {
-    private String path;
+public class JsonWriter extends FileDataWriter {
 
     public JsonWriter(String path) {
-        this.path = path;
+        super(path);
     }
 
     @Override
