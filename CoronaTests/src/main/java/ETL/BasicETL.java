@@ -9,7 +9,7 @@ public class BasicETL implements ETL {
     private Transformer transformer;
     private Loader loader;
 
-    public BasicETL(Loader loader, Transformer transformer, Extractor extractor) {
+    public BasicETL(Extractor extractor, Transformer transformer, Loader loader) {
         this.extractor = extractor;
         this.transformer = transformer;
         this.loader = loader;

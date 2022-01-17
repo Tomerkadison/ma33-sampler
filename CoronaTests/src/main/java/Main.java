@@ -2,6 +2,8 @@ import ETL.BasicETL;
 import Extractor.CsvExtractor;
 import Loader.FileLoader;
 import Loader.Writer.XmlWriter.XmlWriter;
+import Transformer.LabTestsTransformer;
+import Transformer.Transformer;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -15,7 +17,8 @@ public class Main {
             properties.load(new FileInputStream("src/main/resources/filesProperties.properties"));
             CsvExtractor csvExtractor = new CsvExtractor(properties.getProperty("readingPath"));
             FileLoader basicLoader = new FileLoader(new XmlWriter(properties.getProperty("writingPath"),"labTest"));
-            BasicETL etl = new BasicETL(csvExtractor, basicLoader);
+            Transformer transformer = new LabTestsTransformer();
+            BasicETL etl = new BasicETL(csvExtractor, transformer,basicLoader);
             etl.execute();
         } catch (FileNotFoundException e) {
             e.printStackTrace();

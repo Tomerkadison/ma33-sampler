@@ -39,6 +39,6 @@ public class DataManager {
     }
 
     public String[] getParameters() {
-        return parameters;
+        return this.parameters;
     }
 }
