@@ -15,8 +15,8 @@ public class Main {
         Properties properties = new Properties();
         try {
             properties.load(new FileInputStream("src/main/resources/filesProperties.properties"));
-            CsvExtractor csvExtractor = new CsvExtractor(properties.getProperty("readingPath"));
-            FileLoader basicLoader = new FileLoader(new XmlWriter(properties.getProperty("writingPath"),"labTest"));
+            CsvExtractor csvExtractor = new CsvExtractor(properties.getProperty("labTestsReadingPath"));
+            FileLoader basicLoader = new FileLoader(new XmlWriter(properties.getProperty("labTestsWritingPath"),"labTest"));
             Transformer transformer = new LabTestsTransformer();
             BasicETL etl = new BasicETL(csvExtractor, transformer,basicLoader);
             etl.execute();

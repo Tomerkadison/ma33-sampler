@@ -21,11 +21,8 @@ public class FileLoader extends Loader {
 
     @Override
     public void load() {
-        Logger logger = Logger.getLogger(FileLoader.class.getName());
-        logger.addHandler(new ConsoleHandler());
         ObjectMapper mapper = new ObjectMapper();
         for (int i = 0; i < (this.data.getData().size() - 1) / amountInFile; i++) {
-            logger.info("writing a new data file in " + path);
             dataWriter.writeRecords(this.data.getRecords(i * amountInFile, (i + 1) * amountInFile));
             this.path = this.path.substring(0, this.path.length() - this.type.length() - 1) + "l." + type;
             this.dataWriter.setPath(this.path);
