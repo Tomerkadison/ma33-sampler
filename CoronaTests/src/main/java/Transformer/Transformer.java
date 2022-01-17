@@ -9,7 +9,7 @@ public abstract class Transformer {
         this.dataManager = dataManager;
     }
 
-    public DataManager getData() {
+    public DataManager getDataManager() {
         return dataManager;
     }
 

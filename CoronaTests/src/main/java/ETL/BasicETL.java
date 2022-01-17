@@ -26,7 +26,7 @@ public class BasicETL implements ETL {
         this.extractor.extract();
         this.transformer.setData(this.extractor.getData());
         this.transformer.Transform();
-        this.loader.setData(transformer.getData());
+        this.loader.setData(transformer.getDataManager());
         this.loader.load();
     }
 }
