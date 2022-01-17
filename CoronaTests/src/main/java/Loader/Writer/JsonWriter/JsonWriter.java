@@ -30,6 +30,10 @@ public class JsonWriter extends FileDataWriter {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
 
+    @Override
+    protected String setType() {
+        return "json";
     }
 }
