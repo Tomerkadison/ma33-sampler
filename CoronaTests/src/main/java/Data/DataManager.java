@@ -21,17 +21,17 @@ public class DataManager {
         this.data.add(newEntity);
     }
 
-    public List<HashMap<String, String>> getRecords(int i, int j){
-        return this.data.subList(i,j);
+    public List<HashMap<String, String>> getRecords(int i, int j) {
+        return this.data.subList(i, j);
     }
 
-    public void addColumn(String columnName){
+    public void addColumn(String columnName) {
         String[] oldParameters = this.parameters.clone();
-        this.parameters = new String[oldParameters.length+1];
-        for(int i = 0;i<oldParameters.length;i++){
+        this.parameters = new String[oldParameters.length + 1];
+        for (int i = 0; i < oldParameters.length; i++) {
             this.parameters[i] = oldParameters[i];
         }
-        this.parameters[this.parameters.length -1] = columnName;
+        this.parameters[this.parameters.length - 1] = columnName;
     }
 
     public ArrayList<HashMap<String, String>> getData() {

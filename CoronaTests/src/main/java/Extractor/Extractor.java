@@ -8,5 +8,4 @@ import java.io.IOException;
 
 public interface Extractor {
     void extract();
-    DataManager getData();
 }
