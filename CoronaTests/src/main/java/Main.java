@@ -12,12 +12,11 @@ public class Main {
         Properties properties = new Properties();
         try {
             properties.load(new FileInputStream("src/main/resources/filesProperties.properties"));
-
             CsvExtractor csvExtractor = new CsvExtractor(properties.getProperty("readingPath"));
             FileLoader basicLoader = new FileLoader(properties.getProperty("writingPath"), "json");
             BasicETL etl = new BasicETL(csvExtractor, basicLoader);
             etl.execute();
-        }catch (FileNotFoundException e) {
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
