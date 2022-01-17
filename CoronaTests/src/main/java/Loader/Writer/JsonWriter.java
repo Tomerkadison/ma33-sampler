@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class JsonWriter implements DataWriter{
+public class JsonWriter implements DataWriter {
     private String path;
 
     public JsonWriter(String path) {
@@ -22,8 +22,8 @@ public class JsonWriter implements DataWriter{
     public void writeRecords(List<HashMap<String, String>> records) {
         ObjectMapper mapper = new ObjectMapper();
         try {
-            mapper.writeValue(Paths.get(this.path).toFile(),records);
-        }catch (JsonMappingException e) {
+            mapper.writeValue(Paths.get(this.path).toFile(), records);
+        } catch (JsonMappingException e) {
             e.printStackTrace();
         } catch (JsonGenerationException e) {
             e.printStackTrace();
