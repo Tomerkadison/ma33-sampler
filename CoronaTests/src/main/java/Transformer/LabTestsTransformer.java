@@ -21,6 +21,5 @@ public class LabTestsTransformer extends Transformer {
         } catch (InvalidIdException e) {
             e.printStackTrace();
         }
-
     }
 }

@@ -1,8 +1,8 @@
-package Loader.Writer.Factory;
+package Loader.Writer.JsonWriter;
 
 import Loader.Writer.DataWriter;
 import Loader.Writer.Factory.DataWriterFactory;
-import Loader.Writer.JsonWriter;
+import Loader.Writer.JsonWriter.JsonWriter;
 
 public class JsonWriterFactory implements DataWriterFactory {
     private String path;

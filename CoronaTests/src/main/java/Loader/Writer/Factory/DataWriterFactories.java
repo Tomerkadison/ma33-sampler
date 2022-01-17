@@ -1,5 +1,7 @@
 package Loader.Writer.Factory;
 
+import Loader.Writer.JsonWriter.JsonWriterFactory;
+
 import java.util.HashMap;
 
 public class DataWriterFactories {

@@ -1,5 +1,6 @@
-package Loader.Writer;
+package Loader.Writer.JsonWriter;
 
+import Loader.Writer.FileDataWriter;
 import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
