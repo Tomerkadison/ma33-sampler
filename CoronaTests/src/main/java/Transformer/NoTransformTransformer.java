@@ -1,8 +1,6 @@
 package Transformer;
 
-import Data.DataManager;
-
-public class NoTransformTransformer extends BasicTransformer {
+public class NoTransformTransformer extends Transformer {
 
     @Override
     public void Transform() {

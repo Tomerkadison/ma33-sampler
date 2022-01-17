@@ -13,14 +13,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class BasicLoader implements Loader {
+public class FileLoader extends Loader {
     private String path;
-    private DataManager data;
     private String type;
     private DataWriter dataWriter;
     private static final int amountInFile = 50000;
 
-    public BasicLoader(String path, String type) {
+    public FileLoader(String path, String type) {
         this.type = type;
         this.path = path + "." + type;
         this.dataWriter = new DataWriterFactories(this.path).get(this.type).create();
@@ -35,9 +34,5 @@ public class BasicLoader implements Loader {
             this.dataWriter = new DataWriterFactories(this.path).get(this.type).create();
         }
         this.dataWriter.writeRecords(this.data.getRecords(amountInFile * ((this.data.getData().size() - 1) / amountInFile), this.data.getData().size()));
-    }
-
-    public void setData(DataManager data) {
-        this.data = data;
     }
 }

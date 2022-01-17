@@ -5,17 +5,17 @@ import Loader.*;
 import Transformer.*;
 
 public class BasicETL implements ETL {
-    private BasicExtractor extractor;
-    private BasicTransformer transformer;
-    private BasicLoader loader;
+    private Extractor extractor;
+    private Transformer transformer;
+    private Loader loader;
 
-    public BasicETL(BasicLoader loader, BasicTransformer transformer, BasicExtractor extractor) {
+    public BasicETL(Loader loader, Transformer transformer, Extractor extractor) {
         this.extractor = extractor;
         this.transformer = transformer;
         this.loader = loader;
     }
 
-    public BasicETL(BasicExtractor extractor, BasicLoader loader) {
+    public BasicETL(Extractor extractor, Loader loader) {
         this.extractor = extractor;
         this.transformer = new NoTransformTransformer();
         this.loader = loader;
