@@ -18,12 +18,9 @@ public class Main {
             properties.load(new FileInputStream("src/main/resources/filesProperties.properties"));
             CsvExtractor csvExtractor = new CsvExtractor(properties.getProperty("labTestsReadingPath"));
             FileLoader basicLoader = new FileLoader(new XmlWriter(properties.getProperty("labTestsWritingPath"), "labTest"));
-            FileLoader basicLoader2 = new FileLoader(new JsonWriter(properties.getProperty("labTestsWritingPath")));
             Transformer transformer = new LabTestsTransformer();
             BasicETL etl = new BasicETL(csvExtractor, transformer,basicLoader);
-            BasicETL etl1 = new BasicETL(csvExtractor,transformer,basicLoader2);
             etl.execute();
-            etl1.execute();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {

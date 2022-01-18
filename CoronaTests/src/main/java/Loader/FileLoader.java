@@ -2,6 +2,8 @@ package Loader;
 import Loader.Writer.FileDataWriter;
 import Logger.MyLogger;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

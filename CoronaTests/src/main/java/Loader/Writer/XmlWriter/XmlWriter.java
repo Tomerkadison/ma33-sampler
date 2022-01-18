@@ -26,6 +26,9 @@ public class XmlWriter extends FileDataWriter {
     public XmlWriter(String path, String recordName) {
         super(path);
         this.recordName = recordName;
+    }
+
+    public void setNewDocument(){
         try {
             DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
@@ -39,6 +42,7 @@ public class XmlWriter extends FileDataWriter {
 
     @Override
     public void writeRecords(List<HashMap<String, String>> records) {
+        setNewDocument();
         for (HashMap<String, String> record : records) {
             Element xmlRecord = this.document.createElement(this.recordName);
             this.root.appendChild(xmlRecord);
