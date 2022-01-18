@@ -1,17 +1,12 @@
 import ETL.BasicETL;
 import Extractor.CsvExtractor;
-import Loader.FileLoader;
-import Loader.Writer.JsonWriter.JsonWriter;
 import Loader.SqlLoader;
-import Transformer.CrossDataTransformer.CrossDataTransformer;
+import Transformer.LabResultsTrasnsformer.LabResultsValidation;
 import Transformer.Transformer;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Properties;
-import Transformer.*;
+
 public class Main {
     public static void main(String[] args) {
         Properties properties = new Properties();
