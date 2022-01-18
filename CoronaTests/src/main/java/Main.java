@@ -1,7 +1,6 @@
 import ETL.BasicETL;
 import Extractor.CsvExtractor;
 import Loader.FileLoader;
-import Loader.Writer.JsonWriter.JsonWriter;
 import Loader.Writer.XmlWriter.XmlWriter;
 import Transformer.LabTestsTransformer;
 import Transformer.Transformer;

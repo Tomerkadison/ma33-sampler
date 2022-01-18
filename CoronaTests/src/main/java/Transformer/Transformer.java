@@ -3,7 +3,7 @@ package Transformer;
 import Data.DataManager;
 
 public abstract class Transformer {
-    private DataManager dataManager;
+    protected DataManager dataManager;
 
     public void setData(DataManager dataManager) {
         this.dataManager = dataManager;
