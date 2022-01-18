@@ -10,7 +10,7 @@ public class FileLoader extends Loader {
     private String path;
     private String type;
     private FileDataWriter fileDataWriter;
-    private static final int amountInFile = 100;
+    private static final int amountInFile = 50000;
 
     public FileLoader(FileDataWriter dataWriter) {
         this.fileDataWriter = dataWriter;

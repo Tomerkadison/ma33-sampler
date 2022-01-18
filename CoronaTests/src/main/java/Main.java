@@ -1,7 +1,9 @@
 import ETL.BasicETL;
 import Extractor.CsvExtractor;
 import Loader.FileLoader;
+import Loader.Writer.JsonWriter.JsonWriter;
 import Loader.Writer.XmlWriter.XmlWriter;
+import Transformer.CrossDataTransformer.CrossDataTransformer;
 import Transformer.LabTestsTransformer;
 import Transformer.Transformer;
 
@@ -15,10 +17,16 @@ public class Main {
         Properties properties = new Properties();
         try {
             properties.load(new FileInputStream("src/main/resources/filesProperties.properties"));
-            CsvExtractor csvExtractor = new CsvExtractor(properties.getProperty("labTestsReadingPath"));
-            FileLoader basicLoader = new FileLoader(new XmlWriter(properties.getProperty("labTestsWritingPath"), "labTest"));
-            Transformer transformer = new LabTestsTransformer();
-            BasicETL etl = new BasicETL(csvExtractor, transformer,basicLoader);
+            FileLoader loader = new FileLoader(new JsonWriter(properties.getProperty("positiveCoronaPeopleWritingPath")));
+            CsvExtractor labTestsExtractor = new CsvExtractor(properties.getProperty("labTestsReadingPath"));
+            CsvExtractor madaReportsExtractor = new CsvExtractor(properties.getProperty("madaReportsReadingPath"));
+            madaReportsExtractor.extract();
+            Transformer transformer = new CrossDataTransformer(
+                    madaReportsExtractor.getData(),
+                    "IDNum",
+                    new String[]{"IDNum", "IDType", "FirstName", "LastName", "City", "Street", "BuildingNumber", "Barcode", "BirthDate"
+                            , "LabCode", "ResultDate", "TakeDate", "StickerNumber", "ResultTestCorona", "Variant", "TestType"});
+            BasicETL etl = new BasicETL(labTestsExtractor, transformer, loader);
             etl.execute();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
