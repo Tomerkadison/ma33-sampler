@@ -7,14 +7,16 @@ import org.apache.commons.logging.impl.Log4JLogger;
 import org.apache.log4j.ConsoleAppender;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-
+import Logger.MyLogger;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.logging.Level;
 
 public class LabTestsTransformer extends Transformer {
     @Override
     public void Transform() {
         HealthCareInfoProvider healthCareInfoProvider = new HealthCareInfoProvider();
+        MyLogger myLogger = new MyLogger();
         for (HashMap<String, String> record : this.getDataManager().getData()) {
             try {
                 PersonInsured person = healthCareInfoProvider.fetchInfo(Integer.parseInt(record.get("IDNum")), Integer.parseInt(record.get("IDType")));
@@ -22,7 +24,7 @@ public class LabTestsTransformer extends Transformer {
                 record.put("HEALTH_CARE_ID", String.valueOf(person.getHealthCareId()));
                 record.put("HEALTH_CARE_NAME", String.valueOf(person.getHealthCareName()));
             } catch (InvalidIdException e) {
-                e.printStackTrace();
+                myLogger.getLOGGER().log(Level.WARNING,e.getMessage());
             }
         }
     }
