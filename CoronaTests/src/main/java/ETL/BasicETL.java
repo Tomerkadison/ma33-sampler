@@ -27,14 +27,14 @@ public class BasicETL implements ETL {
 
     @Override
     public void execute() {
-        Logger logger = new MyLogger().getLOGGER();
-        logger.log(Level.INFO,"Extracting");
+        Logger logger = new MyLogger().getLogger();
+        logger.log(Level.INFO, "Extracting");
         this.extractor.extract();
         this.transformer.setData(this.extractor.getData());
-        logger.log(Level.INFO,"Transforming");
+        logger.log(Level.INFO, "Transforming");
         this.transformer.Transform();
         this.loader.setData(transformer.getDataManager());
-        logger.log(Level.INFO,"Loading");
+        logger.log(Level.INFO, "Loading");
         this.loader.load();
     }
 }

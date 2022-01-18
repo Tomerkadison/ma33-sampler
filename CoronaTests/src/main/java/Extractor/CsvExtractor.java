@@ -9,7 +9,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Logger;
+
 import Logger.MyLogger;
+
 public class CsvExtractor extends FileExtractor {
 
     public CsvExtractor(String path) {
@@ -18,7 +20,7 @@ public class CsvExtractor extends FileExtractor {
 
     @Override
     public void extract() {
-        Logger logger = new MyLogger().getLOGGER();
+        Logger logger = new MyLogger().getLogger();
         try {
             CSVReader reader = new CSVReader(new BufferedReader(new FileReader(path)));
             String[] parameters = reader.readNext();
@@ -34,13 +36,10 @@ public class CsvExtractor extends FileExtractor {
         } catch (CsvValidationException e) {
             e.printStackTrace();
         }
-
     }
 
     @Override
     public DataManager getData() {
         return this.data;
     }
-
-
 }

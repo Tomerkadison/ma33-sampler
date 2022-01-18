@@ -28,7 +28,7 @@ public class XmlWriter extends FileDataWriter {
         this.recordName = recordName;
     }
 
-    public void setNewDocument(){
+    public void setNewDocument() {
         try {
             DocumentBuilderFactory documentFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder documentBuilder = documentFactory.newDocumentBuilder();
