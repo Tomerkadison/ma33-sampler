@@ -17,14 +17,15 @@ public class LabTestsTransformer extends Transformer {
     public void Transform() {
         HealthCareInfoProvider healthCareInfoProvider = new HealthCareInfoProvider();
         MyLogger myLogger = new MyLogger();
-        for (HashMap<String, String> record : this.getDataManager().getData()) {
+        for (int i = 0;i<this.getDataManager().getData().size();i++) {
+            HashMap<String,String> record = this.getDataManager().getData().get(i);
             try {
                 PersonInsured person = healthCareInfoProvider.fetchInfo(Integer.parseInt(record.get("IDNum")), Integer.parseInt(record.get("IDType")));
                 record.put("JOIN_DATE", String.valueOf(person.getJoinDate()));
                 record.put("HEALTH_CARE_ID", String.valueOf(person.getHealthCareId()));
                 record.put("HEALTH_CARE_NAME", String.valueOf(person.getHealthCareName()));
             } catch (InvalidIdException e) {
-                myLogger.getLOGGER().log(Level.WARNING,e.getMessage());
+                myLogger.getLOGGER().log(Level.WARNING,e.getMessage() + " in record #" + i);
             }
         }
     }
